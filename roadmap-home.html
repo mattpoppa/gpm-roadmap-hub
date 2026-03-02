@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Strategy - Roadmap Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f6f8; --white: #ffffff; --border: #e2e5ea; --border-light: #edf0f3;
+    --text: #111827; --text-secondary: #6b7280; --text-tertiary: #9ca3af;
+    --accent: #1d4ed8; --green: #15803d; --green-bg: #f0fdf4; --green-border: #bbf7d0;
+    --red: #b91c1c; --red-bg: #fef2f2; --red-border: #fecaca;
+    --blue-bg: #eff6ff; --blue-border: #bfdbfe;
+    --gray-bg: #f9fafb; --gray-border: #e5e7eb;
+  }
+  body { background: var(--bg); color: var(--text); font-family: "Inter", sans-serif; font-size: 14px; line-height: 1.5; min-height: 100vh; }
+
+  /* Topbar */
+  .topbar { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+  .topbar-brand { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+  .topbar-brand span { color: var(--text); }
+  .topbar-meta { font-size: 12px; color: var(--text-tertiary); }
+
+  /* Layout */
+  .wrapper { max-width: 1080px; margin: 0 auto; padding: 40px 40px 80px; }
+  header { margin-bottom: 32px; }
+  .header-eyebrow { font-size: 12px; font-weight: 500; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  h1 { font-size: 26px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; margin-bottom: 4px; }
+  .header-sub { font-size: 13px; color: var(--text-secondary); }
+
+  /* GPM bar */
+  .gpm-bar { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px 22px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 36px; }
+  .gpm-info { display: flex; align-items: center; gap: 12px; }
+  .gpm-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--blue-bg); border: 1px solid var(--blue-border); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--accent); flex-shrink: 0; }
+  .gpm-name { font-size: 14px; font-weight: 600; color: var(--text); }
+  .gpm-role { font-size: 12px; color: var(--text-tertiary); }
+  .gpm-products { display: flex; gap: 6px; flex-wrap: wrap; }
+  .product-tag { font-size: 11px; font-weight: 500; color: var(--text-secondary); background: var(--gray-bg); border: 1px solid var(--gray-border); border-radius: 4px; padding: 3px 8px; }
+
+  /* Collapsible section */
+  .collapsible { margin-bottom: 12px; }
+
+  .section-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 6px 0;
+    margin-bottom: 0;
+    text-align: left;
+    color: inherit;
+  }
+
+  .section-toggle-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .section-chevron {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .section-toggle.collapsed .section-chevron { transform: rotate(-90deg); }
+
+  .section-toggle-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-toggle-count {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    background: var(--gray-bg);
+    border: 1px solid var(--gray-border);
+    border-radius: 10px;
+    padding: 1px 7px;
+  }
+
+  .section-body {
+    overflow: hidden;
+    transition: max-height 0.25s ease, opacity 0.2s ease;
+    max-height: 1000px;
+    opacity: 1;
+  }
+
+  .section-body.collapsed { max-height: 0; opacity: 0; }
+
+  .section-inner { padding-top: 14px; padding-bottom: 28px; }
+
+  /* Cards grid */
+  .roadmap-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+
+  /* Roadmap card */
+  a.roadmap-card { text-decoration: none; color: inherit; }
+  .roadmap-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: row; align-items: stretch; transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s; }
+  .roadmap-card:hover { border-color: #c7d2fe; box-shadow: 0 4px 16px rgba(29,78,216,0.07); transform: translateY(-2px); cursor: pointer; }
+  .card-top { padding: 20px 28px; border-bottom: none; border-right: 1px solid var(--border-light); flex: 1; }
+  .card-quarter { font-size: 11px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .card-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 5px; letter-spacing: -0.01em; }
+  .card-date { font-size: 12px; color: var(--text-tertiary); }
+  .card-stats { padding: 20px 28px; display: flex; flex-direction: column; gap: 10px; justify-content: center; min-width: 180px; }
+  .card-stat { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 500; color: var(--text-secondary); }
+  .card-stat-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .dot-blue { background: var(--accent); }
+  .dot-green { background: var(--green); }
+  .dot-red { background: var(--red); }
+  .card-arrow { display: flex; align-items: center; padding: 20px 22px; color: var(--text-tertiary); font-size: 18px; border-left: 1px solid var(--border-light); }
+
+  /* Add card */
+  .card-add { background: transparent; border: 2px dashed var(--border); border-radius: 12px; min-height: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--text-tertiary); cursor: pointer; transition: border-color 0.15s, color 0.15s; }
+  .card-add:hover { border-color: var(--accent); color: var(--accent); }
+  .add-icon { font-size: 22px; }
+  .add-label { font-size: 13px; font-weight: 500; }
+
+  /* Badges */
+  .badge-gray { background: var(--gray-bg); color: var(--text-tertiary); border: 1px solid var(--gray-border); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; display: inline-flex; }
+  .badge-purple { background: #f5f3ff; color: #6d28d9; border: 1px solid #ddd6fe; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; display: inline-flex; }
+  .dimmed { opacity: 0.45; pointer-events: none; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-brand">Veterans United &nbsp;&#183;&nbsp; <span>Product Strategy</span></div>
+  <div class="topbar-meta">GPM: Matthew Poppa</div>
+</div>
+
+<div class="wrapper">
+
+  <header>
+    <div class="header-eyebrow">Product Strategy</div>
+    <h1>Roadmap Hub</h1>
+    <div class="header-sub">Active and historical roadmap snapshots</div>
+  </header>
+
+  <div class="gpm-bar">
+    <div class="gpm-info">
+      <div class="gpm-avatar">MP</div>
+      <div>
+        <div class="gpm-name">Matthew Poppa</div>
+        <div class="gpm-role">Group Product Manager</div>
+      </div>
+    </div>
+    <div class="gpm-products">
+      <span class="product-tag">Ollie</span>
+      <span class="product-tag">myQ Mobile</span>
+      <span class="product-tag">myQ Desktop</span>
+      <span class="product-tag">HomeKey</span>
+      <span class="product-tag">Texting Platforms</span>
+    </div>
+  </div>
+
+  <!-- Roadmaps -->
+  <div class="collapsible">
+    <button class="section-toggle" onclick="toggle(this)">
+      <span class="section-toggle-label">Roadmaps</span>
+      <span class="section-chevron">&#9660;</span>
+      <span class="section-toggle-line"></span>
+      <span class="section-toggle-count">1</span>
+    </button>
+    <div class="section-body">
+      <div class="section-inner">
+        <div class="roadmap-grid">
+          <a class="roadmap-card" href="roadmap-q1-feb.html">
+            <div class="card-top">
+              <div class="card-quarter">Q1 2026 &nbsp;&#183;&nbsp; February</div>
+              <div class="card-title">Roadmap Review</div>
+              <div class="card-date">Last updated Feb 27, 2026</div>
+            </div>
+            <div class="card-stats">
+              <div class="card-stat"><span class="card-stat-dot dot-blue"></span>7 In Progress</div>
+              <div class="card-stat"><span class="card-stat-dot dot-red"></span>2 At Risk</div>
+              <div class="card-stat"><span class="card-stat-dot dot-green"></span>3 Complete</div>
+            </div>
+            <div class="card-arrow">&#8594;</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Friday Updates -->
+  <div class="collapsible">
+    <button class="section-toggle" onclick="toggle(this)">
+      <span class="section-toggle-label">Friday Updates</span>
+      <span class="section-chevron">&#9660;</span>
+      <span class="section-toggle-line"></span>
+      <span class="section-toggle-count">0</span>
+    </button>
+    <div class="section-body">
+      <div class="section-inner">
+        <p style="font-size: 13px; color: var(--text-tertiary);">No updates yet.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function toggle(btn) {
+    btn.classList.toggle('collapsed');
+    const body = btn.nextElementSibling;
+    body.classList.toggle('collapsed');
+  }
+</script>
+
+</body>
+</html>
