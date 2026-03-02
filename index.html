@@ -31,12 +31,12 @@
   .header-sub { font-size: 13px; color: var(--text-secondary); }
 
   /* GPM bar */
-  .gpm-bar { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px 22px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 36px; }
-  .gpm-info { display: flex; align-items: center; gap: 12px; }
+  .gpm-bar { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px 22px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 36px; gap: 16px; }
+  .gpm-info { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
   .gpm-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--blue-bg); border: 1px solid var(--blue-border); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--accent); flex-shrink: 0; }
   .gpm-name { font-size: 14px; font-weight: 600; color: var(--text); }
   .gpm-role { font-size: 12px; color: var(--text-tertiary); }
-  .gpm-products { display: flex; gap: 6px; flex-wrap: wrap; }
+  .gpm-products { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
   .product-tag { font-size: 11px; font-weight: 500; color: var(--text-secondary); background: var(--gray-bg); border: 1px solid var(--gray-border); border-radius: 4px; padding: 3px 8px; }
 
   /* Collapsible section */
@@ -51,7 +51,6 @@
     gap: 10px;
     cursor: pointer;
     padding: 6px 0;
-    margin-bottom: 0;
     text-align: left;
     color: inherit;
   }
@@ -74,11 +73,7 @@
 
   .section-toggle.collapsed .section-chevron { transform: rotate(-90deg); }
 
-  .section-toggle-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
+  .section-toggle-line { flex: 1; height: 1px; background: var(--border); }
 
   .section-toggle-count {
     font-size: 11px;
@@ -90,15 +85,8 @@
     padding: 1px 7px;
   }
 
-  .section-body {
-    overflow: hidden;
-    transition: max-height 0.25s ease, opacity 0.2s ease;
-    max-height: 1000px;
-    opacity: 1;
-  }
-
+  .section-body { overflow: hidden; transition: max-height 0.25s ease, opacity 0.2s ease; max-height: 1000px; opacity: 1; }
   .section-body.collapsed { max-height: 0; opacity: 0; }
-
   .section-inner { padding-top: 14px; padding-bottom: 28px; }
 
   /* Cards grid */
@@ -108,7 +96,7 @@
   a.roadmap-card { text-decoration: none; color: inherit; }
   .roadmap-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: row; align-items: stretch; transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s; }
   .roadmap-card:hover { border-color: #c7d2fe; box-shadow: 0 4px 16px rgba(29,78,216,0.07); transform: translateY(-2px); cursor: pointer; }
-  .card-top { padding: 20px 28px; border-bottom: none; border-right: 1px solid var(--border-light); flex: 1; }
+  .card-top { padding: 20px 28px; border-right: 1px solid var(--border-light); flex: 1; }
   .card-quarter { font-size: 11px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
   .card-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 5px; letter-spacing: -0.01em; }
   .card-date { font-size: 12px; color: var(--text-tertiary); }
@@ -120,16 +108,34 @@
   .dot-red { background: var(--red); }
   .card-arrow { display: flex; align-items: center; padding: 20px 22px; color: var(--text-tertiary); font-size: 18px; border-left: 1px solid var(--border-light); }
 
-  /* Add card */
-  .card-add { background: transparent; border: 2px dashed var(--border); border-radius: 12px; min-height: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--text-tertiary); cursor: pointer; transition: border-color 0.15s, color 0.15s; }
-  .card-add:hover { border-color: var(--accent); color: var(--accent); }
-  .add-icon { font-size: 22px; }
-  .add-label { font-size: 13px; font-weight: 500; }
-
   /* Badges */
   .badge-gray { background: var(--gray-bg); color: var(--text-tertiary); border: 1px solid var(--gray-border); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; display: inline-flex; }
   .badge-purple { background: #f5f3ff; color: #6d28d9; border: 1px solid #ddd6fe; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; display: inline-flex; }
   .dimmed { opacity: 0.45; pointer-events: none; }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .topbar { padding: 0 16px; height: 52px; }
+    .topbar-meta { display: none; }
+    .wrapper { padding: 24px 16px 60px; }
+    h1 { font-size: 22px; }
+    .header-sub { font-size: 12px; }
+    .gpm-bar { flex-direction: column; align-items: flex-start; padding: 14px 16px; gap: 12px; }
+    .gpm-products { justify-content: flex-start; }
+    .roadmap-card { flex-direction: column; }
+    .card-top { border-right: none; border-bottom: 1px solid var(--border-light); padding: 16px; }
+    .card-stats { flex-direction: row; flex-wrap: wrap; gap: 10px; padding: 14px 16px; min-width: unset; }
+    .card-stat { font-size: 12px; }
+    .card-arrow { display: none; }
+    .section-inner { padding-top: 12px; padding-bottom: 20px; }
+  }
+
+  /* ── Tablet ── */
+  @media (min-width: 641px) and (max-width: 900px) {
+    .topbar { padding: 0 24px; }
+    .wrapper { padding: 32px 24px 60px; }
+    .gpm-products { justify-content: flex-end; }
+  }
 </style>
 </head>
 <body>
