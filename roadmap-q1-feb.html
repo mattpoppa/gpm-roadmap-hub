@@ -9,427 +9,166 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #f5f6f8;
-    --white: #ffffff;
-    --border: #e2e5ea;
-    --border-light: #edf0f3;
-    --text: #111827;
-    --text-secondary: #6b7280;
-    --text-tertiary: #9ca3af;
-    --accent: #1d4ed8;
-    --green: #15803d;
-    --green-bg: #f0fdf4;
-    --green-border: #bbf7d0;
-    --yellow: #b45309;
-    --yellow-bg: #fffbeb;
-    --yellow-border: #fde68a;
-    --red: #b91c1c;
-    --red-bg: #fef2f2;
-    --red-border: #fecaca;
-    --blue-bg: #eff6ff;
-    --blue-border: #bfdbfe;
-    --gray-bg: #f9fafb;
-    --gray-border: #e5e7eb;
-    --orange: #c2410c;
-    --orange-bg: #fff7ed;
-    --orange-border: #fed7aa;
+    --bg: #f5f6f8; --white: #ffffff; --border: #e2e5ea; --border-light: #edf0f3;
+    --text: #111827; --text-secondary: #6b7280; --text-tertiary: #9ca3af;
+    --accent: #1d4ed8; --green: #15803d; --green-bg: #f0fdf4; --green-border: #bbf7d0;
+    --yellow: #b45309; --yellow-bg: #fffbeb; --yellow-border: #fde68a;
+    --red: #b91c1c; --red-bg: #fef2f2; --red-border: #fecaca;
+    --blue-bg: #eff6ff; --blue-border: #bfdbfe;
+    --gray-bg: #f9fafb; --gray-border: #e5e7eb;
+    --orange: #c2410c; --orange-bg: #fff7ed; --orange-border: #fed7aa;
   }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    line-height: 1.5;
-    min-height: 100vh;
-  }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.5; min-height: 100vh; }
 
-  .topbar {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: 0 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 56px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .topbar-brand {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-secondary);
-  }
-
+  /* Topbar */
+  .topbar { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+  .topbar-left { display: flex; align-items: center; gap: 16px; }
+  .topbar-brand { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
   .topbar-brand span { color: var(--text); }
+  .topbar-meta { font-size: 12px; color: var(--text-tertiary); display: flex; align-items: center; gap: 16px; }
+  .home-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: #1d4ed8; text-decoration: none; padding: 6px 12px; border: 1px solid #bfdbfe; border-radius: 6px; background: #eff6ff; white-space: nowrap; }
 
-  .topbar-meta {
-    font-size: 12px;
-    color: var(--text-tertiary);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
+  .live-dot { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: var(--green); font-weight: 500; }
+  .live-dot::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-  .live-dot {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    color: var(--green);
-    font-weight: 500;
-  }
-
-  .live-dot::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    background: var(--green);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-
-  .wrapper {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 36px 40px 80px;
-  }
-
+  /* Layout */
+  .wrapper { max-width: 1080px; margin: 0 auto; padding: 36px 40px 80px; }
   header { margin-bottom: 28px; }
+  .header-eyebrow { font-size: 12px; font-weight: 500; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  h1 { font-size: 24px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; margin-bottom: 4px; }
+  .header-sub { font-size: 13px; color: var(--text-secondary); }
 
-  .header-eyebrow {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 6px;
-  }
-
-  h1 {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: -0.02em;
-    margin-bottom: 4px;
-  }
-
-  .header-sub {
-    font-size: 13px;
-    color: var(--text-secondary);
-  }
-
-  .summary-bar {
-    display: flex;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    margin-bottom: 24px;
-    overflow: hidden;
-  }
-
-  .stat {
-    flex: 1;
-    padding: 16px 20px;
-    border-right: 1px solid var(--border);
-    text-align: center;
-  }
-
+  /* Summary bar */
+  .summary-bar { display: flex; background: var(--white); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 24px; overflow: hidden; }
+  .stat { flex: 1; padding: 16px 20px; border-right: 1px solid var(--border); text-align: center; }
   .stat:last-child { border-right: none; }
+  .stat-num { font-size: 22px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+  .stat-label { font-size: 11px; font-weight: 500; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.06em; }
 
-  .stat-num {
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
+  /* Squad section */
+  .squad-section { margin-bottom: 28px; }
+  .squad-header { font-size: 12px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .squad-grid { display: flex; gap: 10px; }
+  .squad-card { flex: 1; background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; display: flex; align-items: center; gap: 14px; }
+  .squad-num { font-size: 28px; font-weight: 700; color: var(--accent); line-height: 1; flex-shrink: 0; }
+  .squad-name { font-size: 13px; font-weight: 500; color: var(--text-secondary); line-height: 1.3; }
 
-  .stat-label {
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .tab-nav {
-    display: flex;
-    gap: 2px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 24px;
-  }
-
-  .tab-btn {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-secondary);
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    padding: 10px 16px;
-    margin-bottom: -1px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    transition: color 0.15s;
-    white-space: nowrap;
-  }
-
+  /* Tabs */
+  .tab-nav { display: flex; gap: 2px; border-bottom: 1px solid var(--border); margin-bottom: 24px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: var(--text-secondary); background: none; border: none; border-bottom: 2px solid transparent; padding: 10px 16px; margin-bottom: -1px; cursor: pointer; display: flex; align-items: center; gap: 7px; transition: color 0.15s; white-space: nowrap; flex-shrink: 0; }
   .tab-btn:hover { color: var(--text); }
-
-  .tab-btn.active {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-  }
-
-  .tab-count {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 1px 6px;
-    border-radius: 10px;
-    background: var(--gray-bg);
-    color: var(--text-tertiary);
-  }
-
-  .tab-btn.active .tab-count {
-    background: var(--blue-bg);
-    color: var(--accent);
-  }
-
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tab-count { font-size: 11px; font-weight: 600; padding: 1px 6px; border-radius: 10px; background: var(--gray-bg); color: var(--text-tertiary); }
+  .tab-btn.active .tab-count { background: var(--blue-bg); color: var(--accent); }
   .tab-panel { display: none; }
   .tab-panel.active { display: block; animation: fadeIn 0.2s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  /* Alert bar */
+  .alert-bar { background: var(--red-bg); border: 1px solid var(--red-border); border-radius: 8px; padding: 10px 16px; font-size: 12px; font-weight: 500; color: var(--red); display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
 
-  .alert-bar {
-    background: var(--red-bg);
-    border: 1px solid var(--red-border);
-    border-radius: 8px;
-    padding: 10px 16px;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--red);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-
-  .data-table {
-    width: 100%;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    border-collapse: collapse;
-  }
-
-  .data-table thead {
-    background: var(--gray-bg);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .data-table th {
-    text-align: left;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    padding: 10px 16px;
-  }
-
-  .data-table td {
-    padding: 14px 16px;
-    font-size: 13px;
-    color: var(--text);
-    border-bottom: 1px solid var(--border-light);
-    vertical-align: top;
-  }
-
+  /* Table */
+  .data-table { width: 100%; background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; border-collapse: collapse; }
+  .data-table thead { background: var(--gray-bg); border-bottom: 1px solid var(--border); }
+  .data-table th { text-align: left; font-size: 11px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.07em; padding: 10px 16px; }
+  .data-table td { padding: 14px 16px; font-size: 13px; color: var(--text); border-bottom: 1px solid var(--border-light); vertical-align: top; }
   .data-table tr:last-child td { border-bottom: none; }
   .data-table tbody tr:hover td { background: #fafbfc; }
-
-  .item-name {
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 2px;
-  }
-
-  .item-note {
-    font-size: 12px;
-    color: var(--text-secondary);
-    line-height: 1.5;
-    margin-top: 3px;
-  }
-
-  .jira-tag {
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--text-tertiary);
-    background: var(--gray-bg);
-    border: 1px solid var(--gray-border);
-    border-radius: 4px;
-    padding: 1px 6px;
-    display: inline-block;
-    margin: 2px 2px 0 0;
-  }
-
+  .item-name { font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .item-note { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-top: 3px; }
+  .jira-tag { font-size: 11px; font-weight: 500; color: var(--text-tertiary); background: var(--gray-bg); border: 1px solid var(--gray-border); border-radius: 4px; padding: 1px 6px; display: inline-block; margin: 2px 2px 0 0; }
   .target-risk { color: var(--red); font-weight: 500; }
   .target-soon { color: var(--yellow); font-weight: 500; }
   .target-normal { color: var(--text); font-weight: 500; }
-
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 4px;
-    white-space: nowrap;
-  }
-
+  .badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
   .badge-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
   .badge-yellow { background: var(--yellow-bg); color: var(--yellow); border: 1px solid var(--yellow-border); }
   .badge-red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
   .badge-blue { background: var(--blue-bg); color: var(--accent); border: 1px solid var(--blue-border); }
   .badge-gray { background: var(--gray-bg); color: var(--text-tertiary); border: 1px solid var(--gray-border); }
   .badge-orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-border); }
-
   .row-priority td { background: #fff9f9; }
   .row-priority:hover td { background: #fef2f2 !important; }
 
-  .discuss-list {
-    display: flex;
-    flex-direction: column;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  .discuss-item {
-    padding: 20px 24px;
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    border-bottom: 1px solid var(--border-light);
-  }
-
+  /* Discuss */
+  .discuss-list { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .discuss-item { padding: 20px 24px; display: flex; gap: 16px; align-items: flex-start; border-bottom: 1px solid var(--border-light); }
   .discuss-item:last-child { border-bottom: none; }
+  .discuss-num { font-size: 11px; font-weight: 700; color: var(--text-tertiary); background: var(--gray-bg); border: 1px solid var(--gray-border); border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .discuss-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .discuss-body { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
 
-  .discuss-num {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--text-tertiary);
-    background: var(--gray-bg);
-    border: 1px solid var(--gray-border);
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .discuss-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-
-  .discuss-body {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-
-  .squad-section {
-    margin-bottom: 28px;
-  }
-
-  .squad-header {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 12px;
-  }
-
-  .squad-grid {
-    display: flex;
-    gap: 10px;
-  }
-
-  .squad-card {
-    flex: 1;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .squad-num {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1;
-    flex-shrink: 0;
-  }
-
-  .squad-name {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-secondary);
-    line-height: 1.3;
-  }
-
-  .goals-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 12px;
-  }
-
-  .goal-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-  }
-
+  /* Goals */
+  .goals-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+  .goal-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
   .goal-icon { font-size: 18px; margin-bottom: 10px; }
+  .goal-text { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
 
-  .goal-text {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.6;
+  /* ── Mobile card layout ── */
+  /* Replaces table rows with stacked cards on small screens */
+  .mobile-card { display: none; }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .topbar { padding: 0 16px; height: 52px; }
+    .topbar-brand { display: none; }
+    .topbar-meta { gap: 10px; }
+    .topbar-meta span:not(.live-dot) { display: none; }
+    .wrapper { padding: 20px 16px 60px; }
+    h1 { font-size: 20px; }
+    .header-sub { font-size: 12px; }
+
+    /* Summary bar — scroll horizontally */
+    .summary-bar { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 10px; }
+    .stat { min-width: 80px; padding: 12px 10px; }
+    .stat-num { font-size: 18px; }
+    .stat-label { font-size: 10px; }
+
+    /* Squad cards — 2 per row */
+    .squad-grid { flex-wrap: wrap; }
+    .squad-card { flex: 1 1 calc(50% - 5px); min-width: calc(50% - 5px); padding: 12px 14px; gap: 10px; }
+    .squad-num { font-size: 22px; }
+    .squad-name { font-size: 12px; }
+
+    /* Hide desktop tables, show mobile cards */
+    .data-table { display: none; }
+    .mobile-card { display: block; }
+
+    .m-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 10px; }
+    .m-card.priority { background: #fff9f9; border-color: var(--red-border); }
+    .m-card-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .m-card-note { font-size: 12px; color: var(--text-secondary); margin-bottom: 10px; line-height: 1.5; }
+    .m-card-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .m-meta-item { font-size: 11px; color: var(--text-tertiary); display: flex; gap: 4px; align-items: center; }
+    .m-meta-label { font-weight: 600; color: var(--text-tertiary); }
+
+    /* Discuss */
+    .discuss-item { padding: 14px 16px; gap: 12px; }
+    .discuss-title { font-size: 13px; }
+    .discuss-body { font-size: 12px; }
+
+    /* Goals */
+    .goals-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── Tablet ── */
+  @media (min-width: 641px) and (max-width: 900px) {
+    .topbar { padding: 0 24px; }
+    .wrapper { padding: 28px 24px 60px; }
+    .squad-grid { flex-wrap: wrap; }
+    .squad-card { flex: 1 1 calc(33% - 7px); }
+    .topbar-meta gap: 10px; }
   }
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <div style="display: flex; align-items: center; gap: 16px;">
-    <a href="index.html" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: #1d4ed8;; text-decoration: none; padding: 6px 12px; border: 1px solid #bfdbfe; border-radius: 6px; background: #eff6ff;">&#8592; Home</a>
+  <div class="topbar-left">
+    <a href="index.html" class="home-btn">&#8592; Home</a>
     <div class="topbar-brand">Veterans United &nbsp;&#183;&nbsp; <span>Product Strategy</span></div>
   </div>
   <div class="topbar-meta">
@@ -448,56 +187,22 @@
   </header>
 
   <div class="summary-bar">
-    <div class="stat">
-      <div class="stat-num" style="color: var(--accent)">7</div>
-      <div class="stat-label">In Progress</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" style="color: var(--red)">2</div>
-      <div class="stat-label">At Risk</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" style="color: var(--green)">3</div>
-      <div class="stat-label">Completed</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" style="color: var(--yellow)">2</div>
-      <div class="stat-label">On Hold / Q2</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" style="color: var(--text-tertiary)">2</div>
-      <div class="stat-label">Deprioritized</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" style="color: var(--accent)">2</div>
-      <div class="stat-label">Planning</div>
-    </div>
+    <div class="stat"><div class="stat-num" style="color: var(--accent)">7</div><div class="stat-label">In Progress</div></div>
+    <div class="stat"><div class="stat-num" style="color: var(--red)">2</div><div class="stat-label">At Risk</div></div>
+    <div class="stat"><div class="stat-num" style="color: var(--green)">3</div><div class="stat-label">Completed</div></div>
+    <div class="stat"><div class="stat-num" style="color: var(--yellow)">2</div><div class="stat-label">On Hold / Q2</div></div>
+    <div class="stat"><div class="stat-num" style="color: var(--text-tertiary)">2</div><div class="stat-label">Deprioritized</div></div>
+    <div class="stat"><div class="stat-num" style="color: var(--accent)">2</div><div class="stat-label">Planning</div></div>
   </div>
 
-  <!-- ENGINEERS PER SQUAD -->
   <div class="squad-section">
     <div class="squad-header">Engineers per Squad</div>
     <div class="squad-grid">
-      <div class="squad-card">
-        <div class="squad-num">3</div>
-        <div class="squad-name">Cisco Cloud Migration</div>
-      </div>
-      <div class="squad-card">
-        <div class="squad-num">8</div>
-        <div class="squad-name">myQ Messenger</div>
-      </div>
-      <div class="squad-card">
-        <div class="squad-num">2</div>
-        <div class="squad-name">myQ 2.0</div>
-      </div>
-      <div class="squad-card">
-        <div class="squad-num">4</div>
-        <div class="squad-name">Speed &amp; Stability</div>
-      </div>
-      <div class="squad-card">
-        <div class="squad-num">4</div>
-        <div class="squad-name">Fast Track</div>
-      </div>
+      <div class="squad-card"><div class="squad-num">3</div><div class="squad-name">Cisco Cloud Migration</div></div>
+      <div class="squad-card"><div class="squad-num">8</div><div class="squad-name">myQ Messenger</div></div>
+      <div class="squad-card"><div class="squad-num">2</div><div class="squad-name">myQ 2.0</div></div>
+      <div class="squad-card"><div class="squad-num">4</div><div class="squad-name">Speed &amp; Stability</div></div>
+      <div class="squad-card"><div class="squad-num">4</div><div class="squad-name">Fast Track</div></div>
     </div>
   </div>
 
@@ -514,259 +219,112 @@
   <!-- IN PROGRESS -->
   <div class="tab-panel active" id="tab-inprogress">
     <div class="alert-bar">⚡ High Priority — myQ Speed &amp; Stability Improvements</div>
+
+    <!-- Desktop table -->
     <table class="data-table">
-      <thead>
-        <tr>
-          <th style="width: 36%">Item</th>
-          <th>PO</th>
-          <th>Target</th>
-          <th>Health</th>
-          <th>Jira</th>
-        </tr>
-      </thead>
+      <thead><tr><th style="width:36%">Item</th><th>PO</th><th>Target</th><th>Health</th><th>Jira</th></tr></thead>
       <tbody>
-        <tr>
-          <td>
-            <div class="item-name">Client Care Specialist + Texting Adjustments</div>
-            <div class="item-note">myQ Desktop + texting updates for RSSN</div>
-          </td>
-          <td>Shawna Brooks</td>
-          <td class="target-soon">Mar 2</td>
-          <td><span class="badge badge-green">On Track</span></td>
-          <td><span class="jira-tag">PD-110</span><span class="jira-tag">PD-325</span></td>
-        </tr>
-        <tr>
-          <td>
-            <div class="item-name">Mort's File Summary + LH Credit File Summary</div>
-            <div class="item-note">Active development</div>
-          </td>
-          <td>Emily / Jordan</td>
-          <td class="target-normal">TBD</td>
-          <td><span class="badge badge-gray">—</span></td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="item-name">Activity Timeline: Hide Sensitive Info</div>
-            <div class="item-note">Planning phase</div>
-          </td>
-          <td>Shawna Brooks</td>
-          <td class="target-normal">End of Q1</td>
-          <td><span class="badge badge-gray">—</span></td>
-          <td>—</td>
-        </tr>
-        <tr class="row-priority">
-          <td><div class="item-name">myQ Speed &amp; Stability Improvements</div></td>
-          <td>Matthew Poppa</td>
-          <td class="target-soon">Mar 31</td>
-          <td><span class="badge badge-green">On Track</span></td>
-          <td><span class="jira-tag">PD-103</span></td>
-        </tr>
-        <tr>
-          <td>
-            <div class="item-name">Cisco Cloud Conversion</div>
-            <div class="item-note">Contact Center + Calling rollout</div>
-          </td>
-          <td>Heather Richardson</td>
-          <td class="target-risk">Mar 25</td>
-          <td><span class="badge badge-yellow">At Risk</span></td>
-          <td><span class="jira-tag">PD-113</span></td>
-        </tr>
-        <tr>
-          <td>
-            <div class="item-name">myQ Messenger</div>
-            <div class="item-note">Sidebar Enhancement POC: Poppa · Emily (2/13): "Still working through things, coordinating with myQ 2.0 delivery to get us to pilot."</div>
-          </td>
-          <td>Emily Roark</td>
-          <td class="target-soon">Mar 26</td>
-          <td><span class="badge badge-green">On Track</span></td>
-          <td><span class="jira-tag">PD-112</span></td>
-        </tr>
-        <tr>
-          <td>
-            <div class="item-name">myQ 2.0 MVP (Mobile First Release)</div>
-            <div class="item-note">Target updated from TBD</div>
-          </td>
-          <td>Katelyn Lueckenotte</td>
-          <td class="target-soon">Apr 1</td>
-          <td><span class="badge badge-green">On Track</span></td>
-          <td><span class="jira-tag">PD-111</span></td>
-        </tr>
+        <tr><td><div class="item-name">Client Care Specialist + Texting Adjustments</div><div class="item-note">myQ Desktop + texting updates for RSSN</div></td><td>Shawna Brooks</td><td class="target-soon">Mar 2</td><td><span class="badge badge-green">On Track</span></td><td><span class="jira-tag">PD-110</span><span class="jira-tag">PD-325</span></td></tr>
+        <tr><td><div class="item-name">Mort's File Summary + LH Credit File Summary</div><div class="item-note">Active development</div></td><td>Emily / Jordan</td><td class="target-normal">TBD</td><td><span class="badge badge-gray">—</span></td><td>—</td></tr>
+        <tr><td><div class="item-name">Activity Timeline: Hide Sensitive Info</div><div class="item-note">Planning phase</div></td><td>Shawna Brooks</td><td class="target-normal">End of Q1</td><td><span class="badge badge-gray">—</span></td><td>—</td></tr>
+        <tr class="row-priority"><td><div class="item-name">myQ Speed &amp; Stability Improvements</div></td><td>Matthew Poppa</td><td class="target-soon">Mar 31</td><td><span class="badge badge-green">On Track</span></td><td><span class="jira-tag">PD-103</span></td></tr>
+        <tr><td><div class="item-name">Cisco Cloud Conversion</div><div class="item-note">Contact Center + Calling rollout</div></td><td>Heather Richardson</td><td class="target-risk">Mar 25</td><td><span class="badge badge-yellow">At Risk</span></td><td><span class="jira-tag">PD-113</span></td></tr>
+        <tr><td><div class="item-name">myQ Messenger</div><div class="item-note">Sidebar Enhancement POC: Poppa · Emily (2/13): "Still working through things, coordinating with myQ 2.0 delivery to get us to pilot."</div></td><td>Emily Roark</td><td class="target-soon">Mar 26</td><td><span class="badge badge-green">On Track</span></td><td><span class="jira-tag">PD-112</span></td></tr>
+        <tr><td><div class="item-name">myQ 2.0 MVP (Mobile First Release)</div><div class="item-note">Target updated from TBD</div></td><td>Katelyn Lueckenotte</td><td class="target-soon">Apr 1</td><td><span class="badge badge-green">On Track</span></td><td><span class="jira-tag">PD-111</span></td></tr>
       </tbody>
     </table>
+
+    <!-- Mobile cards -->
+    <div class="mobile-card">
+      <div class="m-card"><div class="m-card-title">Client Care Specialist + Texting Adjustments</div><div class="m-card-note">myQ Desktop + texting updates for RSSN</div><div class="m-card-meta"><span class="m-meta-item"><span class="m-meta-label">PO</span> Shawna Brooks</span><span class="m-meta-item"><span class="m-meta-label">Target</span> <span class="target-soon">Mar 2</span></span><span class="badge badge-green">On Track</span><span class="jira-tag">PD-110</span><span class="jira-tag">PD-325</span></div></div>
+      <div class="m-card"><div class="m-card-title">Mort's File Summary + LH Credit File Summary</div><div class="m-card-note">Active development</div><div class="m-card-meta"><span class="m-meta-item"><span class="m-meta-label">PO</span> Emily / Jordan</span><span class="m-meta-item"><span class="m-meta-label">Target</span> TBD</span><span class="badge badge-gray">—</span></div></div>
+      <div class="m-card"><div class="m-card-title">Activity Timeline: Hide Sensitive Info</div><div class="m-card-note">Planning phase</div><div class="m-card-meta"><span class="m-meta-item"><span class="m-meta-label">PO</span> Shawna Brooks</span><span class="m-meta-item"><span class="m-meta-label">Target</span> End of Q1</span><span class="badge badge-gray">—</span></div></div>
+      <div class="m-card priority"><div class="m-card-title">myQ Speed &amp; Stability Improvements</div><div class="m-card-meta"><span class="m-meta-item"><span class="m-meta-label">PO</span> Matthew Poppa</span><span class="m-meta-item"><span class="m-meta-label">Target</span> <span class="target-soon">Mar 31</span></span><span class="badge badge-green">On Track</span><span class="badge badge-red">High Priority</span><span class="jira-tag">PD-103</span></div></div>
+      <div class="m-card"><div class="m-card-title">Cisco Cloud Conversion</div><div class="m-card-note">Contact Center + Calling rollout</div><div class="m-card-meta"><span class="m-meta-item"><span class="m-meta-label">PO</span> Heather Richardson</span><span class="m-meta-item"><span class="m-meta-label">Target</span> <span class="target-risk">Mar 25</span></span><span class="badge badge-yellow">At Risk</span><span class="jira-tag">PD-113</span></div></div>
+      <div class="m-card"><div class="m-card-title">myQ Messenger</div><div class="m-card-note">Sidebar POC: Poppa · Emily (2/13): "Still working through things, coordinating with myQ 2.0 delivery."</div><div class="m-card-meta"><span class="m-meta-item"><span class="m-meta-label">PO</span> Emily Roark</span><span class="m-meta-item"><span class="m-meta-label">Target</span> <span class="target-soon">Mar 26</span></span><span class="badge badge-green">On Track</span><span class="jira-tag">PD-112</span></div></div>
+      <div class="m-card"><div class="m-card-title">myQ 2.0 MVP (Mobile First Release)</div><div class="m-card-note">Target updated from TBD</div><div class="m-card-meta"><span class="m-meta-item"><span class="m-meta-label">PO</span> Katelyn Lueckenotte</span><span class="m-meta-item"><span class="m-meta-label">Target</span> <span class="target-soon">Apr 1</span></span><span class="badge badge-green">On Track</span><span class="jira-tag">PD-111</span></div></div>
+    </div>
   </div>
 
   <!-- COMPLETED -->
   <div class="tab-panel" id="tab-completed">
     <table class="data-table">
-      <thead>
-        <tr>
-          <th style="width: 50%">Item</th>
-          <th>PO</th>
-          <th>Notes</th>
-          <th>Status</th>
-        </tr>
-      </thead>
+      <thead><tr><th style="width:50%">Item</th><th>PO</th><th>Notes</th><th>Status</th></tr></thead>
       <tbody>
-        <tr>
-          <td><div class="item-name">Platinum &amp; Gold Leads</div></td>
-          <td>Jordan Brown</td>
-          <td>New toggles, lead indicators, lead form info</td>
-          <td><span class="badge badge-green">Complete</span></td>
-        </tr>
-        <tr>
-          <td><div class="item-name">Get Agent: Revoke</div></td>
-          <td>Shawna Brooks</td>
-          <td>—</td>
-          <td><span class="badge badge-green">Complete</span></td>
-        </tr>
-        <tr>
-          <td><div class="item-name">ICD Awareness (Pipeline Panel)</div></td>
-          <td>Emily Roark</td>
-          <td>—</td>
-          <td><span class="badge badge-green">Complete</span></td>
-        </tr>
+        <tr><td><div class="item-name">Platinum &amp; Gold Leads</div></td><td>Jordan Brown</td><td>New toggles, lead indicators, lead form info</td><td><span class="badge badge-green">Complete</span></td></tr>
+        <tr><td><div class="item-name">Get Agent: Revoke</div></td><td>Shawna Brooks</td><td>—</td><td><span class="badge badge-green">Complete</span></td></tr>
+        <tr><td><div class="item-name">ICD Awareness (Pipeline Panel)</div></td><td>Emily Roark</td><td>—</td><td><span class="badge badge-green">Complete</span></td></tr>
       </tbody>
     </table>
+    <div class="mobile-card">
+      <div class="m-card"><div class="m-card-title">Platinum &amp; Gold Leads</div><div class="m-card-note">New toggles, lead indicators, lead form info</div><div class="m-card-meta"><span class="m-meta-item"><span class="m-meta-label">PO</span> Jordan Brown</span><span class="badge badge-green">Complete</span></div></div>
+      <div class="m-card"><div class="m-card-title">Get Agent: Revoke</div><div class="m-card-meta"><span class="m-meta-item"><span class="m-meta-label">PO</span> Shawna Brooks</span><span class="badge badge-green">Complete</span></div></div>
+      <div class="m-card"><div class="m-card-title">ICD Awareness (Pipeline Panel)</div><div class="m-card-meta"><span class="m-meta-item"><span class="m-meta-label">PO</span> Emily Roark</span><span class="badge badge-green">Complete</span></div></div>
+    </div>
   </div>
 
   <!-- ON HOLD -->
   <div class="tab-panel" id="tab-onhold">
     <table class="data-table">
-      <thead>
-        <tr>
-          <th style="width: 35%">Item</th>
-          <th>PO</th>
-          <th>Jira</th>
-          <th>Notes</th>
-          <th>Status</th>
-        </tr>
-      </thead>
+      <thead><tr><th style="width:35%">Item</th><th>PO</th><th>Jira</th><th>Notes</th><th>Status</th></tr></thead>
       <tbody>
-        <tr>
-          <td><div class="item-name">Ringless Voicemails</div></td>
-          <td>Shawna Brooks</td>
-          <td><span class="jira-tag">PD-232</span></td>
-          <td>Waiting on vendor. Jira target Mar 31 — at risk</td>
-          <td><span class="badge badge-orange">Q2 Apr/May</span></td>
-        </tr>
-        <tr>
-          <td><div class="item-name">Q's Who - Returning Customer</div></td>
-          <td>Jordan Brown</td>
-          <td>—</td>
-          <td>Resources redirected to speed &amp; stability</td>
-          <td><span class="badge badge-orange">Moved to Q2</span></td>
-        </tr>
+        <tr><td><div class="item-name">Ringless Voicemails</div></td><td>Shawna Brooks</td><td><span class="jira-tag">PD-232</span></td><td>Waiting on vendor. Jira target Mar 31 — at risk</td><td><span class="badge badge-orange">Q2 Apr/May</span></td></tr>
+        <tr><td><div class="item-name">Q's Who - Returning Customer</div></td><td>Jordan Brown</td><td>—</td><td>Resources redirected to speed &amp; stability</td><td><span class="badge badge-orange">Moved to Q2</span></td></tr>
       </tbody>
     </table>
+    <div class="mobile-card">
+      <div class="m-card"><div class="m-card-title">Ringless Voicemails</div><div class="m-card-note">Waiting on vendor. Jira target Mar 31 — at risk</div><div class="m-card-meta"><span class="m-meta-item"><span class="m-meta-label">PO</span> Shawna Brooks</span><span class="badge badge-orange">Q2 Apr/May</span><span class="jira-tag">PD-232</span></div></div>
+      <div class="m-card"><div class="m-card-title">Q's Who - Returning Customer</div><div class="m-card-note">Resources redirected to speed &amp; stability</div><div class="m-card-meta"><span class="m-meta-item"><span class="m-meta-label">PO</span> Jordan Brown</span><span class="badge badge-orange">Moved to Q2</span></div></div>
+    </div>
   </div>
 
   <!-- DEPRIORITIZED -->
   <div class="tab-panel" id="tab-deprio">
     <table class="data-table">
-      <thead>
-        <tr>
-          <th style="width: 55%">Item</th>
-          <th>PO</th>
-          <th>Status</th>
-        </tr>
-      </thead>
+      <thead><tr><th style="width:55%">Item</th><th>PO</th><th>Status</th></tr></thead>
       <tbody>
-        <tr>
-          <td><div class="item-name">Q's View: HELOC Lead Gen (CRM Flow)</div></td>
-          <td>TBD</td>
-          <td><span class="badge badge-gray">Deprioritized</span></td>
-        </tr>
-        <tr>
-          <td><div class="item-name">Q's View: LH Workload Display</div></td>
-          <td>Jordan Brown</td>
-          <td><span class="badge badge-gray">Deprioritized</span></td>
-        </tr>
+        <tr><td><div class="item-name">Q's View: HELOC Lead Gen (CRM Flow)</div></td><td>TBD</td><td><span class="badge badge-gray">Deprioritized</span></td></tr>
+        <tr><td><div class="item-name">Q's View: LH Workload Display</div></td><td>Jordan Brown</td><td><span class="badge badge-gray">Deprioritized</span></td></tr>
       </tbody>
     </table>
+    <div class="mobile-card">
+      <div class="m-card"><div class="m-card-title">Q's View: HELOC Lead Gen (CRM Flow)</div><div class="m-card-meta"><span class="m-meta-item"><span class="m-meta-label">PO</span> TBD</span><span class="badge badge-gray">Deprioritized</span></div></div>
+      <div class="m-card"><div class="m-card-title">Q's View: LH Workload Display</div><div class="m-card-meta"><span class="m-meta-item"><span class="m-meta-label">PO</span> Jordan Brown</span><span class="badge badge-gray">Deprioritized</span></div></div>
+    </div>
   </div>
 
   <!-- PLANNING -->
   <div class="tab-panel" id="tab-planning">
     <table class="data-table">
-      <thead>
-        <tr>
-          <th style="width: 55%">Item</th>
-          <th>PO</th>
-          <th>Jira</th>
-          <th>Status</th>
-        </tr>
-      </thead>
+      <thead><tr><th style="width:55%">Item</th><th>PO</th><th>Jira</th><th>Status</th></tr></thead>
       <tbody>
-        <tr>
-          <td><div class="item-name">myQ Desktop - QS Aura Project (Custom Task Ordering)</div></td>
-          <td>Emily Roark</td>
-          <td><span class="jira-tag">PD-101</span></td>
-          <td><span class="badge badge-blue">Planning</span></td>
-        </tr>
-        <tr>
-          <td><div class="item-name">myQ Desktop - Insurance Tight File Visibility</div></td>
-          <td>Emily Roark</td>
-          <td><span class="jira-tag">PD-104</span></td>
-          <td><span class="badge badge-blue">Planning</span></td>
-        </tr>
+        <tr><td><div class="item-name">myQ Desktop - QS Aura Project (Custom Task Ordering)</div></td><td>Emily Roark</td><td><span class="jira-tag">PD-101</span></td><td><span class="badge badge-blue">Planning</span></td></tr>
+        <tr><td><div class="item-name">myQ Desktop - Insurance Tight File Visibility</div></td><td>Emily Roark</td><td><span class="jira-tag">PD-104</span></td><td><span class="badge badge-blue">Planning</span></td></tr>
       </tbody>
     </table>
+    <div class="mobile-card">
+      <div class="m-card"><div class="m-card-title">myQ Desktop - QS Aura Project (Custom Task Ordering)</div><div class="m-card-meta"><span class="m-meta-item"><span class="m-meta-label">PO</span> Emily Roark</span><span class="badge badge-blue">Planning</span><span class="jira-tag">PD-101</span></div></div>
+      <div class="m-card"><div class="m-card-title">myQ Desktop - Insurance Tight File Visibility</div><div class="m-card-meta"><span class="m-meta-item"><span class="m-meta-label">PO</span> Emily Roark</span><span class="badge badge-blue">Planning</span><span class="jira-tag">PD-104</span></div></div>
+    </div>
   </div>
 
   <!-- DISCUSS -->
   <div class="tab-panel" id="tab-discuss">
     <div class="discuss-list">
-      <div class="discuss-item">
-        <div class="discuss-num">1</div>
-        <div>
-          <div class="discuss-title">Live Call Coaching</div>
-          <div class="discuss-body">Currently turned off due to technical issues. What are the long-term goals and do we need to prioritize for Q2?</div>
-        </div>
-      </div>
-      <div class="discuss-item">
-        <div class="discuss-num">2</div>
-        <div>
-          <div class="discuss-title">myQ Messenger: EZ Send</div>
-          <div class="discuss-body">Long-term ownership and responsibilities.</div>
-        </div>
-      </div>
-      <div class="discuss-item">
-        <div class="discuss-num">3</div>
-        <div>
-          <div class="discuss-title">CQ Requeueing Workflow (Comms Data)</div>
-          <div class="discuss-body">Early Q2 target.</div>
-        </div>
-      </div>
-      <div class="discuss-item">
-        <div class="discuss-num">4</div>
-        <div>
-          <div class="discuss-title">Main Page Re-organize for Ollie</div>
-          <div class="discuss-body">—</div>
-        </div>
-      </div>
+      <div class="discuss-item"><div class="discuss-num">1</div><div><div class="discuss-title">Live Call Coaching</div><div class="discuss-body">Currently turned off due to technical issues. What are the long-term goals and do we need to prioritize for Q2?</div></div></div>
+      <div class="discuss-item"><div class="discuss-num">2</div><div><div class="discuss-title">myQ Messenger: EZ Send</div><div class="discuss-body">Long-term ownership and responsibilities.</div></div></div>
+      <div class="discuss-item"><div class="discuss-num">3</div><div><div class="discuss-title">CQ Requeueing Workflow (Comms Data)</div><div class="discuss-body">Early Q2 target.</div></div></div>
+      <div class="discuss-item"><div class="discuss-num">4</div><div><div class="discuss-title">Main Page Re-organize for Ollie</div><div class="discuss-body">—</div></div></div>
     </div>
   </div>
 
   <!-- GOALS -->
   <div class="tab-panel" id="tab-goals">
     <div class="goals-grid">
-      <div class="goal-card">
-        <div class="goal-icon">💬</div>
-        <div class="goal-text">Capture the majority of employee ↔ customer/agent comms via Messaging App + Batphone</div>
-      </div>
-      <div class="goal-card">
-        <div class="goal-icon">📱</div>
-        <div class="goal-text">95% of LOs using company tech for all applicable workflows</div>
-      </div>
-      <div class="goal-card">
-        <div class="goal-icon">🔄</div>
-        <div class="goal-text">VUX: Returning Customer Context</div>
-      </div>
-      <div class="goal-card">
-        <div class="goal-icon">🏠</div>
-        <div class="goal-text">Support multiple realty brands through digital pathways — Lender Sync + Realty CRM/myQ</div>
-      </div>
+      <div class="goal-card"><div class="goal-icon">💬</div><div class="goal-text">Capture the majority of employee ↔ customer/agent comms via Messaging App + Batphone</div></div>
+      <div class="goal-card"><div class="goal-icon">📱</div><div class="goal-text">95% of LOs using company tech for all applicable workflows</div></div>
+      <div class="goal-card"><div class="goal-icon">🔄</div><div class="goal-text">VUX: Returning Customer Context</div></div>
+      <div class="goal-card"><div class="goal-icon">🏠</div><div class="goal-text">Support multiple realty brands through digital pathways — Lender Sync + Realty CRM/myQ</div></div>
     </div>
   </div>
 
